@@ -1,0 +1,17 @@
+{
+  "name": "webapp-barebone",
+  "author": "Simon Dirmeier",
+  "license": "GPLv3",
+  "devDependencies": {
+    "codecov": "^2.1.0",
+    "eslint": "^3.19.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-eslint": "0.0.5",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.3.0",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.9.4",
+    "mocha": "^3.3.0"
+  }
+}

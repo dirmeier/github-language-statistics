@@ -1,0 +1,15 @@
+{
+  "name": "github-user-statistics",
+  "authors": [
+    "Simon Dirmeier"
+  ],
+  "description": "Compute github user statistics",
+  "main": "index.html",
+  "license": "GPL-3",
+  "homepage": "",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "skeleton": "^2.0.4",
+    "plotlyjs": "plotly#^1.18.1"
+  }
+}

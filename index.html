@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Github user statistics</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+    <link href="bower_components/skeleton/css/skeleton.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <link href="bower_components/skeleton/css/normalize.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <link href="css/custom.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+</head>
+
+
+<body>
+<div class="container">
+    <div>
+        <div class="box">
+            <h1>GitHub user statistics</h1>
+            <p>Use the GitHub API to query a user's favourite languages and compute some statistics.</p>
+        </div>
+        <div class="box">
+            <form>
+                <div align="center" style="text-align: center">
+                    <div class="field" style="margin-bottom: 1px;">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="GitHub user name" id="searchfield">
+                        </div>
+                    </div>
+                    <div class="control" align="center" style="text-align: center">
+                        <button class="button is-link" onclick="query();  return false;">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box">
+            <div>
+                <div  align="center">
+                <div class="loader" id="spinner_id"></div>
+                </div>
+                <div class="plotbox" id="plotbox_id" align="center"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 5%">
+        <p style="font-size: 1em;">&copy; 2017 Simon Dirmeier <a href="https://github.com/dirmeier/github-user-statistics"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
+        </p>
+    </footer>
+
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/plotlyjs/plotly.js"></script>
+<script src="dist/funcs.min.js"></script>
+</body>
+</html>
+

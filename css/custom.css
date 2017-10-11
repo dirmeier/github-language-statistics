@@ -1,0 +1,41 @@
+.container {
+    text-align: center;
+    margin-top: 10%;
+    width: 800px;
+    align: center;
+}
+
+.box {
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+    align: center;
+}
+
+.plotbox {
+    align: center;
+    overflow: auto;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+    font-family: monospace, monospace;
+    font-size: 1em;
+    margin: 0 .2rem;
+    background: #F1F1F1;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    display: none;
+}
+
+.loader {
+    display: none;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
