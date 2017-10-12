@@ -34,6 +34,7 @@ function barplot(div_id, mapping)
             title: 'Most used programming languages in percent',
         };
         $("#spinner_id").hide();
+        /*global Plotly */
         Plotly.newPlot(div_id, [data], layout);
         $(".plotbox").css("display", "block");
     }

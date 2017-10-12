@@ -42,6 +42,7 @@ function stats(user_name, results) {
         });
     }
 
+    /*global barplot */
     barplot("plotbox_id", language_bytes);
 }
 
@@ -52,14 +53,12 @@ function query() {
     var user_name = $('#searchfield').val();
     $.ajax({
         dataType: "json",
-        url: "https://api.github.com/users/" + user_name + "/repos",
+        url: "https://api.github.com/users/" + user_name + "/repos?per_page=1000",
         success: function (result) {
             stats(user_name, result);
         },
         error: function () {
-            $(".plotbox").show();
-            $("#spinner_id").hide();
-            $(".plotbox").html("<h6>Could not GET from GitHub API.<br>Some AJAX error.</h6>");
+            print_error();
         },
         async: false
     });
