@@ -5,7 +5,8 @@ function print_error() {
     $(".plotbox").html("<h6>Could not GET repository information from GitHub API.<br>Some AJAX error.</h6>");
 }
 
-function stats(user_name, results) {
+function get_repo_names(results)
+{
     var repo_names = [];
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
@@ -14,18 +15,18 @@ function stats(user_name, results) {
         }
     }
 
-    var language_bytes = {};
+    return repo_names;
+}
+
+function repo_language_bytes(user_name, repo_names)
+{
+    var repo_stats = {};
     for (i = 0; i < repo_names.length; i++) {
         $.ajax({
             dataType: "json",
             url: "https://api.github.com/repos/" + user_name + "/" + repo_names[i] + "/languages",
             success: function (data) {
-                for (var lang in data) {
-                    if (!(lang in language_bytes)) {
-                        language_bytes[lang] = 0;
-                    }
-                    language_bytes[lang] = language_bytes[lang] + data[lang];
-                }
+                repo_stats[ repo_names[i] ] = data;
             },
             error: function () {
                 print_error();
@@ -34,8 +35,17 @@ function stats(user_name, results) {
         });
     }
 
+    return repo_stats;
+}
+
+
+
+function stats(user_name, data) {
+    var repo_names = get_repo_names(data);
+    var bytes = repo_language_bytes(user_name, repo_names);
+
     /*global barplot */
-    barplot("plotbox_id", language_bytes);
+    barplot("plotbox_id", bytes);
 }
 
 function query() {
