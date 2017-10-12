@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
@@ -6,7 +7,7 @@ module.exports = function (grunt) {
                 separator: ";"
             },
             dist: {
-                src: ["js/query.js", "js/plot.js"],
+                src: ['js/query.js', 'js/plot.js'],
                 dest: "dist/funcs.js"
             }
         },
