@@ -5,19 +5,6 @@ function print_error() {
     $(".plotbox").html("<h6>Could not GET repository information from GitHub API.<br>Some AJAX error.</h6>");
 }
 
-function parse_language(repo_stats)
-{
-    var language_bytes = {};
-    for (var lang in repo_stats) {
-        if (!(lang in language_bytes)) {
-            language_bytes[lang] = 0;
-        }
-        language_bytes[lang] = language_bytes[lang] + repo_stats[lang];
-    }
-
-    return language_bytes;
-}
-
 function stats(user_name, results) {
     var repo_names = [];
     for (var i = 0; i < results.length; i++) {
@@ -32,8 +19,13 @@ function stats(user_name, results) {
         $.ajax({
             dataType: "json",
             url: "https://api.github.com/repos/" + user_name + "/" + repo_names[i] + "/languages",
-            success: function (repo_stats) {
-                language_bytes = parse_language(repo_stats);
+            success: function (data) {
+                for (var lang in data) {
+                    if (!(lang in language_bytes)) {
+                        language_bytes[lang] = 0;
+                    }
+                    language_bytes[lang] = language_bytes[lang] + data[lang];
+                }
             },
             error: function () {
                 print_error();
@@ -84,19 +76,20 @@ function barplot(div_id, mapping)
     var y = [];
     for (var i = 0; i < tuples.length; i++)
     {
+        if (i === 10) break;
         x.push(tuples[i][0]);
-        y.push(tuples[i][1] / sum);
+        y.push(tuples[i][1] );
     }
 
     if (x.length !== 0 && y.length !== 0)
     {
         var data  = {
-            type: "bar",
-            x: x,
-            y:y
+            type: 'bar',
+            y: y,
+            x: x
         };
         var layout = {
-            title: 'Most used programming languages in percent',
+            title: 'Most used programming languages in bytes'
         };
         $("#spinner_id").hide();
         /*global Plotly */

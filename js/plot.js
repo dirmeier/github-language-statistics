@@ -19,19 +19,20 @@ function barplot(div_id, mapping)
     var y = [];
     for (var i = 0; i < tuples.length; i++)
     {
+        if (i === 10) break;
         x.push(tuples[i][0]);
-        y.push(tuples[i][1] / sum);
+        y.push(tuples[i][1] );
     }
 
     if (x.length !== 0 && y.length !== 0)
     {
         var data  = {
-            type: "bar",
-            x: x,
-            y:y
+            type: 'bar',
+            y: y,
+            x: x
         };
         var layout = {
-            title: 'Most used programming languages in percent',
+            title: 'Most used programming languages in bytes'
         };
         $("#spinner_id").hide();
         /*global Plotly */
