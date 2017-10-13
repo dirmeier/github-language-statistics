@@ -34,7 +34,7 @@ function repoLanguageBytes(user_name, repo_names)
       },
       error: function (xhr, status, error)
       {
-        printError(xhr.responseText);
+        printError(JSON.parse(xhr.responseText).message);
       },
       async: false
     });
@@ -49,8 +49,11 @@ function stats(user_name, data)
   var repo_names = getRepoNames(data);
   var bytes = repoLanguageBytes(user_name, repo_names);
 
-  /*global barplot */
-  barplot("plotbox_id", bytes);
+  if (bytes)
+  {
+    /*global barplot */
+    barplot("plotbox_id", bytes);
+  }
 }
 
 function query()
@@ -68,7 +71,7 @@ function query()
     },
     error: function (xhr, status, error)
     {
-      printError(xhr.responseText);
+      printError(JSON.parse(xhr.responseText).message);
     },
     async: false
   });
