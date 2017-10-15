@@ -1,36 +1,40 @@
 function printError(response)
 {
-  $(".plotbox").show();
-  $("#spinner_id").hide();
-  $(".plotbox").html("<h6>Could not GET repository information from GitHub API.<br>" + response + "</h6>");
+  $('.plotbox').show();
+  $('#spinner_id').hide();
+  $('.plotbox').html("<h6>Could not GET repository information from GitHub API.<br>" + response + "</h6>");
 }
 
 function getRepoNames(results)
 {
-  var repo_names = [];
+  var repoNames = [];
   for (var i = 0; i < results.length; i++)
   {
     var result = results[i];
     if (result.fork === false)
     {
-      repo_names.push(result.name);
+      repoNames.push(result.name);
     }
   }
 
-  return repo_names;
+  return repoNames;
 }
 
-function repoLanguageBytes(user_name, repo_names)
+
+
+function repoLanguageBytes(userName, repoNames)
 {
-  var repo_stats = {};
-  for (var i = 0; i < repo_names.length; i++)
+  var repoStats = {};
+
+  var getRepo = function(repoName)
   {
+    var d = {};
     $.ajax({
       dataType: "json",
-      url: "https://api.github.com/repos/" + user_name + "/" + repo_names[i] + "/languages",
+      url: "https://api.github.com/repos/" + userName + "/" + repoName + "/languages",
       success: function (data)
       {
-        repo_stats[repo_names[i]] = data;
+        d = data;
       },
       error: function (xhr, status, error)
       {
@@ -38,16 +42,23 @@ function repoLanguageBytes(user_name, repo_names)
       },
       async: false
     });
+
+    return d;
+  };
+
+  for (var i = 0; i < repoNames.length; i++)
+  {
+      repoStats[repoNames[i]] = getRepo(repoNames[i])
   }
 
-  return repo_stats;
+  return repoStats;
 }
 
 
-function stats(user_name, data)
+function stats(userName, data)
 {
-  var repo_names = getRepoNames(data);
-  var bytes = repoLanguageBytes(user_name, repo_names);
+  var repoNames = getRepoNames(data);
+  var bytes = repoLanguageBytes(userName, repoNames);
 
   if (bytes)
   {
@@ -56,18 +67,18 @@ function stats(user_name, data)
   }
 }
 
-function query()
+var query = function()
 {
-  $("#spinner_id").show();
-  $(".plotbox").hide();
+  $('#spinner_id').show();
+  $('.plotbox').hide();
 
-  var user_name = $('#searchfield').val();
+  var userName = $('#searchfield').val();
   $.ajax({
     dataType: "json",
-    url: "https://api.github.com/users/" + user_name + "/repos?per_page=1000",
+    url: "https://api.github.com/users/" + userName + "/repos?per_page=1000",
     success: function (result)
     {
-      stats(user_name, result);
+      stats(userName, result);
     },
     error: function (xhr, status, error)
     {
@@ -75,4 +86,4 @@ function query()
     },
     async: false
   });
-}
+};

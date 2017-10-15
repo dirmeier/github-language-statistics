@@ -1,9 +1,9 @@
-<h1 align="center"> github-user-statistics </h1>
+<h1 align="center"> github-language-statistics </h1>
 
 
 [![Project Status](http://www.repostatus.org/badges/latest/concept.svg)](http://www.repostatus.org/#concept)
-[![Build Status](https://travis-ci.org/dirmeier/github-user-statistics.svg?branch=master)](https://travis-ci.org/dirmeier/github-user-statistics)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d7da34f83814e9d80091949ce7de06b)](https://www.codacy.com/app/simon-dirmeier/github-user-statistics?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dirmeier/github-user-statistics&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/dirmeier/github-language-statistics.svg?branch=master)](https://travis-ci.org/dirmeier/github-language-statistics)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d7da34f83814e9d80091949ce7de06b)](https://www.codacy.com/app/simon-dirmeier/github-language-statistics?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dirmeier/github-language-statistics&amp;utm_campaign=Badge_Grade)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/)
 
 Compute a GitHub user's most frequently used languages.
@@ -26,7 +26,7 @@ Below, you see my most used languages (13. 10. 2017).
 	</a>
 </div>
 
-Find the webpage [here](https://dirmeier.github.io/github-user-statistics/index.html).
+Find the webpage [here](https://dirmeier.github.io/github-language-statistics/index.html).
 
 ## Author
 

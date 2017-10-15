@@ -1,10 +1,12 @@
 {
-  "name": "wgithub-user-statistics",
+  "name": "wgithub-language-statistics",
   "author": "Simon Dirmeier",
   "license": "GPLv3",
   "devDependencies": {
     "codecov": "^2.1.0",
     "eslint": "^3.19.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-eslint": "0.0.5",

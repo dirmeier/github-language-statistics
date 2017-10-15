@@ -1,8 +1,8 @@
 function printError(response)
 {
-  $(".plotbox").show();
-  $("#spinner_id").hide();
-  $(".plotbox").html("<h6>Could not GET repository information from GitHub API.<br>" + response + "</h6>");
+  $('.plotbox').show();
+  $('#spinner_id').hide();
+  $('.plotbox').html("<h6>Could not GET repository information from GitHub API.<br>" + response + "</h6>");
 }
 
 function getRepoNames(results)
@@ -20,17 +20,21 @@ function getRepoNames(results)
   return repo_names;
 }
 
+
+
 function repoLanguageBytes(user_name, repo_names)
 {
   var repo_stats = {};
-  for (var i = 0; i < repo_names.length; i++)
+
+  var get_repo = function(repo_name)
   {
+    var d = {};
     $.ajax({
       dataType: "json",
-      url: "https://api.github.com/repos/" + user_name + "/" + repo_names[i] + "/languages",
+      url: "https://api.github.com/repos/" + user_name + "/" + repo_name + "/languages",
       success: function (data)
       {
-        repo_stats[repo_names[i]] = data;
+        d = data;
       },
       error: function (xhr, status, error)
       {
@@ -38,6 +42,13 @@ function repoLanguageBytes(user_name, repo_names)
       },
       async: false
     });
+
+    return d;
+  };
+
+  for (var i = 0; i < repo_names.length; i++)
+  {
+      repo_stats[repo_names[i]] = get_repo(repo_names[i])
   }
 
   return repo_stats;
@@ -56,10 +67,10 @@ function stats(user_name, data)
   }
 }
 
-function query()
+var query = function()
 {
-  $("#spinner_id").show();
-  $(".plotbox").hide();
+  $('#spinner_id').show();
+  $('.plotbox').hide();
 
   var user_name = $('#searchfield').val();
   $.ajax({
@@ -75,8 +86,8 @@ function query()
     },
     async: false
   });
-}
-;function barplot(div_id, mapping)
+};
+;function barplot (div_id, mapping)
 {
   var repo_bytes = [];
   for (var repo_name in mapping)
@@ -103,15 +114,15 @@ function query()
       barmode: 'stack',
       height: 1000
     };
-    $("#spinner_id").hide();
+    $('#spinner_id').hide();
     /*global Plotly */
     Plotly.newPlot(div_id, repo_bytes, layout);
-    $(".plotbox").css("display", "block");
+    $('.plotbox').css('display', 'block');
   }
   else
   {
-    $(".plotbox").show();
-    $("#spinner_id").hide();
-    $(".plotbox").html('<h6>Could not plot, got an error.<br> Does this user exist?</h6>');
+    $('.plotbox').show();
+    $('#spinner_id').hide();
+    $('.plotbox').html('<h6>Could not plot, got an error.<br> Does this user exist?</h6>');
   }
 }

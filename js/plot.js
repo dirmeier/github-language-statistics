@@ -1,39 +1,39 @@
-function barplot(div_id, mapping)
+function barplot(divId, mapping)
 {
-  var repo_bytes = [];
-  for (var repo_name in mapping)
+  var repoBytes = [];
+  for (var repoName in mapping)
   {
-    var repo = mapping[repo_name];
-    repo_bytes.unshift({
+    var repo = mapping[repoName];
+    repoBytes.unshift({
       x: [],
       y: [],
-      name: repo_name,
+      name: repoName,
       orientation: 'h',
       type: "bar"
     });
     for (var lang in repo)
     {
-      repo_bytes[0].y.push(lang);
-      repo_bytes[0].x.push(repo[lang]);
+      repoBytes[0].y.push(lang);
+      repoBytes[0].x.push(repo[lang]);
     }
   }
 
-  if (repo_bytes.length !== 0)
+  if (repoBytes.length !== 0)
   {
     var layout = {
       title: 'Most used programming languages in bytes',
       barmode: 'stack',
       height: 1000
     };
-    $("#spinner_id").hide();
+    $('#spinner_id').hide();
     /*global Plotly */
-    Plotly.newPlot(div_id, repo_bytes, layout);
-    $(".plotbox").css("display", "block");
+    Plotly.newPlot(divId, repoBytes, layout);
+    $('.plotbox').css('display', 'block');
   }
   else
   {
-    $(".plotbox").show();
-    $("#spinner_id").hide();
-    $(".plotbox").html('<h6>Could not plot, got an error.<br> Does this user exist?</h6>');
+    $('.plotbox').show();
+    $('#spinner_id').hide();
+    $('.plotbox').html('<h6>Could not plot, got an error.<br> Does this user exist?</h6>');
   }
 }
