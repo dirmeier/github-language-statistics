@@ -21,9 +21,7 @@ limits the number of requests per IP and hour.
 Below, you see my most used languages (13. 10. 2017).
 
 <div align="center" style="text-align: center">
-	<a href="img src="https://rawgit.com/dirmeier/github-user-statistics/master/_fig/github_statistics.png">
 		<img src="https://rawgit.com/dirmeier/github-user-statistics/master/_fig/github_statistics.png" align="center" width="800px"/>
-	</a>
 </div>
 
 Find the webpage [here](https://dirmeier.github.io/github-language-statistics/index.html).
