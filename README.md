@@ -1,7 +1,7 @@
-<h1 align="center"> github-language-statistics </h1>
+# github-language-statistics
 
 
-[![Project Status](http://www.repostatus.org/badges/latest/concept.svg)](http://www.repostatus.org/#concept)
+[![Project Status](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)
 [![Build Status](https://travis-ci.org/dirmeier/github-language-statistics.svg?branch=master)](https://travis-ci.org/dirmeier/github-language-statistics)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d7da34f83814e9d80091949ce7de06b)](https://www.codacy.com/app/simon-dirmeier/github-language-statistics?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dirmeier/github-language-statistics&amp;utm_campaign=Badge_Grade)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](https://gruntjs.com/)
